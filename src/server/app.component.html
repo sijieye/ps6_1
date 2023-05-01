@@ -1,0 +1,28 @@
+<div *ngIf="!weather">
+  <h2>Click button to get weather data</h2>
+  <button (click)="fetchData()">Get Data</button>
+</div>
+
+<div *ngIf="weather">
+  <h2>Weather</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>City</th>
+        <th>Temperature °F</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of weather">
+        <td>{{ data.location.name }}, {{ data.location.country }}</td>
+        <td>{{ data.current.temp_f }}°F</td>
+        <td>{{ data.current.condition.text }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <button (click)="fetchData()">Refresh Data</button>
+</div>
+
+
